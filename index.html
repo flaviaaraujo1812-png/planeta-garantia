@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Garantia</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="manifest" href="manifest-garantia.json">
+<meta name="theme-color" content="#000000">
+
+<style>
+@page { 
+    size: A4; 
+    margin: 20mm; 
+}
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:white;
+    color:#000;
+}
+
+.documento{
+    width:190mm;
+    margin:auto;
+    padding-top:20px;
+}
+
+.topo{
+    margin-bottom:15px;
+}
+
+.nome-empresa{
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:5px;
+}
+
+.dados-empresa{
+    font-size:12px;
+    line-height:1.6;
+}
+
+.linha{
+    border-top:1px solid #000;
+    margin:10px 0 20px 0;
+}
+
+.numero{
+    text-align:center;
+    font-weight:bold;
+    margin-bottom:20px;
+    font-size:14px;
+}
+
+h2{
+    font-size:13px;
+    margin-top:15px;
+    border-bottom:1px solid #000;
+    padding-bottom:3px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:8px;
+}
+
+input, textarea{
+    width:100%;
+    padding:6px;
+    font-size:12px;
+    border:1px solid #000;
+}
+
+textarea{
+    resize:none;
+}
+
+.termo{
+    margin-top:15px;
+    font-size:12px;
+    line-height:1.6;
+    text-align:justify;
+}
+
+button{
+    margin-top:20px;
+    width:100%;
+    padding:8px;
+    border:none;
+    background:black;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+@media print{
+    button{
+        display:none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="documento">
+
+<div class="topo">
+    <div class="nome-empresa">
+        PLANETA DOS RETROVISORES
+    </div>
+    <div class="dados-empresa">
+        CNPJ: 48.027.075/0001-92<br>
+        Av Treze de Maio, 1310 - CEP 14090-260<br>
+        WhatsApp: (16) 99607-3421
+    </div>
+</div>
+
+<div class="linha"></div>
+
+<div class="numero">
+GARANTIA Nº <span id="numeroGarantia"></span>
+</div>
+
+<h2>Dados do Cliente</h2>
+
+<div class="grid">
+<input type="text" placeholder="Nome do Cliente">
+<input type="text" placeholder="Telefone">
+<input type="text" placeholder="Placa do Veículo">
+<input type="text" placeholder="Modelo do Veículo">
+</div>
+
+<br>
+<input type="date">
+
+<h2>Descrição do Serviço</h2>
+<textarea rows="4" placeholder="Descreva o serviço realizado..."></textarea>
+
+<h2>Termo de Garantia</h2>
+
+<div class="termo">
+Garantia válida por 30 dias a partir da data de emissão.  
+Cobre exclusivamente defeitos relacionados à instalação realizada pela empresa.  
+Não cobre danos decorrentes de mau uso, colisões, infiltrações ou alterações realizadas por terceiros.
+</div>
+
+<button onclick="window.print()">GERAR PDF</button>
+
+</div>
+
+<script>
+function gerarNumero(){
+    const ano = new Date().getFullYear();
+    const numero = Math.floor(Math.random()*900+100);
+    document.getElementById("numeroGarantia").innerText = ano + "-" + numero;
+}
+gerarNumero();
+</script>
+
+</body>
+</html>
